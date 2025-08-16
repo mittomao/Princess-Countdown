@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đếm Ngược Ngày Sinh</title>
+    <title>Đếm ngược ngày chào đón con công chúa</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
@@ -106,6 +106,12 @@
             color: var(--accent);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             animation: pulse 2s infinite;
+
+            @media screen and (max-width: 768px) {
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
+            }
         }
 
         .time-box .label {
@@ -227,14 +233,62 @@
 
 <body>
     <div class="toys-container">
-        <img src="https://cdn-icons-png.flaticon.com/512/3068/3068825.png" class="toy" alt="Rattle Toy">
-        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="toy" alt="Teddy Bear">
-        <img src="https://cdn-icons-png.flaticon.com/512/3068/3068815.png" class="toy" alt="Baby Bottle">
-        <img src="https://cdn-icons-png.flaticon.com/512/616/616554.png" class="toy" alt="Toy Duck">
+        <!-- Bóng bay -->
+        <svg class="toy" viewBox="0 0 100 140" aria-label="Bóng bay pastel">
+            <title>Bóng bay pastel</title>
+            <defs>
+                <linearGradient id="balloon" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#ffd1e8" />
+                    <stop offset="100%" stop-color="#e5d0ff" />
+                </linearGradient>
+            </defs>
+            <ellipse cx="50" cy="45" rx="30" ry="38" fill="url(#balloon)" stroke="#d9c7ff" stroke-width="3" />
+            <path d="M50 80 C48 90, 45 95, 50 105 C55 115, 48 120, 50 130" fill="none" stroke="#bca7ff"
+                stroke-width="2" />
+            <path d="M45 80 L55 80 L50 88 Z" fill="#eacbff" />
+        </svg>
+
+        <!-- Bánh sinh nhật -->
+        <svg class="toy" viewBox="0 0 120 120" aria-label="Bánh sinh nhật">
+            <title>Bánh sinh nhật</title>
+            <rect x="20" y="60" width="80" height="35" rx="8" fill="#ffe4f1" stroke="#ffb3d6" stroke-width="3" />
+            <rect x="28" y="50" width="64" height="15" rx="6" fill="#fff" stroke="#ffb3d6" stroke-width="3" />
+            <circle cx="40" cy="50" r="6" fill="#ffd1e8" />
+            <circle cx="60" cy="50" r="6" fill="#e5d0ff" />
+            <circle cx="80" cy="50" r="6" fill="#ffd1e8" />
+            <rect x="58" y="28" width="4" height="14" rx="2" fill="#ffcf66" />
+            <path d="M60 22 C62 24,58 24,60 26 C62 28,58 28,60 30" fill="#ff8aa1" />
+        </svg>
+
+        <!-- Cầu vồng & mây -->
+        <svg class="toy" viewBox="0 0 140 100" aria-label="Cầu vồng pastel">
+            <title>Cầu vồng pastel</title>
+            <path d="M20 70 A50 50 0 0 1 120 70" fill="none" stroke="#ffd1e8" stroke-width="12" />
+            <path d="M28 70 A42 42 0 0 1 112 70" fill="none" stroke="#e5d0ff" stroke-width="12" />
+            <path d="M36 70 A34 34 0 0 1 104 70" fill="none" stroke="#cfe2ff" stroke-width="12" />
+            <ellipse cx="35" cy="74" rx="16" ry="10" fill="#fff" />
+            <ellipse cx="50" cy="76" rx="16" ry="10" fill="#fff" />
+            <ellipse cx="100" cy="74" rx="16" ry="10" fill="#fff" />
+            <ellipse cx="115" cy="76" rx="16" ry="10" fill="#fff" />
+        </svg>
+
+        <!-- Đũa phép trái tim -->
+        <svg class="toy" viewBox="0 0 100 130" aria-label="Đũa phép trái tim">
+            <title>Đũa phép trái tim</title>
+            <path d="M20 105 L80 45" stroke="#c9b8ff" stroke-width="5" stroke-linecap="round" />
+            <path d="M50 30
+             C50 22,64 20,70 30
+             C76 40,62 50,50 58
+             C38 50,24 40,30 30
+             C36 20,50 22,50 30 Z" fill="#ffd1e8" stroke="#ffb3d6" stroke-width="3" />
+            <circle cx="50" cy="30" r="4" fill="#fff" opacity="0.7" />
+        </svg>
     </div>
+
+
     <div class="container">
         <h1>
-            ⏳Đếm Ngày Con Chào Đời
+            ⏳Đếm Ngày Đón Công Chúa Chào Đời
         </h1>
         <div class="sub" id="dueText">Đang tải ngày dự sinh…</div>
 
