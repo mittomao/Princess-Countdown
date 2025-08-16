@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đếm Ngược Ngày Sinh</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg1: #b3e5fc;
+            --bg2: #e0f7fa;
+            --text: #02475e;
+            --accent: #4fc3f7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            max-height: 100vh;
+            height: 100vh;
+            background: linear-gradient(to bottom, var(--bg1), var(--bg2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+
+            @media screen and (max-width: 768px) {
+                padding: 20px;
+            }
+        }
+
+
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 500px;
+            height: 500px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 45px 100px rgba(14, 21, 47, 0.4), 0 16px 40px rgba(14, 21, 47, 0.4);
+
+            @media screen and (max-width: 768px) {
+                border-radius: 30px;
+            }
+        }
+
+        h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 1.4rem;
+            }
+        }
+
+        h1 img {
+            width: 36px;
+            height: 36px;
+        }
+
+        .sub {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.6);
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .time-box {
+            background: white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: var(--accent);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .time-box .label {
+            font-size: 0.7rem;
+            font-weight: normal;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 4px;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Flip animation for numbers */
+        .flip {
+            animation: flip 0.5s ease-in-out;
+        }
+
+        @keyframes flip {
+            0% {
+                transform: rotateX(0deg);
+            }
+
+            50% {
+                transform: rotateX(90deg);
+            }
+
+            100% {
+                transform: rotateX(0deg);
+            }
+        }
+
+        .baby-info {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 1.1rem;
+            color: var(--accent);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .meta {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 10px;
+        }
+
+        /* Bong bóng */
+        .bubble {
+            position: absolute;
+            bottom: -60px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: rise 10s linear infinite;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                transform: translateY(-110vh) scale(0.8);
+            }
+        }
+
+        /* Đồ chơi di chuyển */
+        .toys-container {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 40px;
+            z-index: 10;
+        }
+
+        .toy {
+            width: 60px;
+            animation: swingToy 3s ease-in-out infinite;
+            transform-origin: top center;
+        }
+
+        .toy:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .toy:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .toy:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes swingToy {
+            0% {
+                transform: rotate(15deg);
+            }
+
+            50% {
+                transform: rotate(-15deg);
+            }
+
+            100% {
+                transform: rotate(15deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toys-container">
+        <img src="https://cdn-icons-png.flaticon.com/512/3068/3068825.png" class="toy" alt="Rattle Toy">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="toy" alt="Teddy Bear">
+        <img src="https://cdn-icons-png.flaticon.com/512/3068/3068815.png" class="toy" alt="Baby Bottle">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616554.png" class="toy" alt="Toy Duck">
+    </div>
+    <div class="container">
+        <h1>
+            ⏳Đếm Ngày Con Chào Đời
+        </h1>
+        <div class="sub" id="dueText">Đang tải ngày dự sinh…</div>
+
+        <div class="countdown">
+            <div class="time-box">
+                <div id="d">--</div>
+                <div class="label">Ngày</div>
+            </div>
+            <div class="time-box">
+                <div id="h">--</div>
+                <div class="label">Giờ</div>
+            </div>
+            <div class="time-box">
+                <div id="m">--</div>
+                <div class="label">Phút</div>
+            </div>
+            <div class="time-box">
+                <div id="s">--</div>
+                <div class="label">Giây</div>
+            </div>
+        </div>
+
+        <div class="baby-info" id="gestation">Bé hiện được: -- tuần -- ngày</div>
+        <div class="meta" id="sinceText"></div>
+    </div>
+
+    <script>
+        // Countdown logic
+        (function () {
+            const dueDate = new Date(2025, 9, 7, 0, 0, 0);
+            const MS_DAY = 24 * 60 * 60 * 1000;
+            const startPregnancy = new Date(dueDate.getTime() - 280 * MS_DAY);
+            const fmt = new Intl.DateTimeFormat('vi-VN', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
+
+            document.getElementById('dueText').textContent = `Ngày dự sinh: ${fmt.format(dueDate)}`;
+            let lastValues = { d: null, h: null, m: null, s: null };
+
+            function updateFlip(id, newValue) {
+                const el = document.getElementById(id);
+                if (lastValues[id] !== newValue) {
+                    el.textContent = newValue;
+                    el.classList.add('flip');
+                    setTimeout(() => el.classList.remove('flip'), 500);
+                    lastValues[id] = newValue;
+                }
+            }
+
+            function tick() {
+                const now = new Date();
+                let diff = dueDate - now;
+
+                if (diff <= 0) {
+                    updateFlip('d', 0);
+                    updateFlip('h', 0);
+                    updateFlip('m', 0);
+                    updateFlip('s', 0);
+                    document.getElementById('gestation').textContent = "Bé đã chào đời 🎉";
+                    document.getElementById('sinceText').textContent = "";
+                    return;
+                }
+
+                const days = Math.floor(diff / MS_DAY);
+                diff -= days * MS_DAY;
+                const hours = Math.floor(diff / (60 * 60 * 1000));
+                diff -= hours * 60 * 60 * 1000;
+                const mins = Math.floor(diff / (60 * 1000));
+                diff -= mins * 60 * 1000;
+                const secs = Math.floor(diff / 1000);
+
+                updateFlip('d', days);
+                updateFlip('h', hours);
+                updateFlip('m', mins);
+                updateFlip('s', secs);
+
+                const pregDays = Math.max(0, Math.floor((now - startPregnancy) / MS_DAY));
+                const weeks = Math.floor(pregDays / 7);
+                const remainDays = pregDays % 7;
+                document.getElementById('gestation').textContent = `Bé hiện được: ${weeks} tuần ${remainDays} ngày`;
+                document.getElementById('sinceText').textContent = `Tính từ ngày bắt đầu thai kỳ: ${fmt.format(startPregnancy)}.`;
+            }
+
+            tick();
+            setInterval(tick, 1000);
+        })();
+
+        // Tạo bong bóng bay
+        function createBubble() {
+            const bubble = document.createElement("div");
+            const size = Math.random() * 20 + 20; // 20-40px
+            bubble.classList.add("bubble");
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.animationDuration = `${8 + Math.random() * 5}s`;
+            document.body.appendChild(bubble);
+
+            setTimeout(() => { bubble.remove(); }, 15000);
+        }
+        setInterval(createBubble, 800);
+    </script>
+</body>
+
+</html>
